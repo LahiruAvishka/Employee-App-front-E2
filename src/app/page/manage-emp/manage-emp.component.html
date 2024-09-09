@@ -4,18 +4,18 @@
 
     <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1"></span>
-        <input type="text" class="form-control" placeholder="FirstName" aria-label="Username"
+        <input type="text" class="form-control" placeholder="FirstName" [(ngModel)] ="employeeObj.firstName" aria-label="Username"
             aria-describedby="basic-addon1">
     </div>
 
     <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1"></span>
-        <input type="text" class="form-control" placeholder="Lastname" aria-label="Username"
+        <input type="text" class="form-control" placeholder="Lastname" [(ngModel)] ="employeeObj.lastName" aria-label="Username"
             aria-describedby="basic-addon1">
     </div>
 
     <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Email" aria-label="Recipient's username"
+        <input type="text" class="form-control" placeholder="Email"[(ngModel)] ="employeeObj.email" aria-label="Recipient's username"
             aria-describedby="basic-addon2">
         <span class="input-group-text" id="basic-addon2">.com</span>
     </div>
@@ -23,7 +23,7 @@
 
     <div class="input-group mb-3">
 
-        <select class="form-select" aria-label="Default select example">
+        <select class="form-select" aria-label="Default select example" id ="department"  [(ngModel)] ="employeeObj.departmentId">
             <option selected>Department</option>
             <option value="1">One</option>
             <option value="2">Two</option>
@@ -34,7 +34,7 @@
 
     <div class="input-group mb-3">
 
-        <select class="form-select" aria-label="Default select example">
+        <select class="form-select" aria-label="Default select example"  id ="role"  [(ngModel)] ="employeeObj.roleId">
             <option selected>Role</option>
             <option value="1">One</option>
             <option value="2">Two</option>
@@ -43,7 +43,7 @@
         
     </div>
 
-    <button type="button" class="btn btn-success">Add Employye</button>
+    <button type="button" class="btn btn-success"(click)="addEmployee()">Add Employye</button>
 
 
 </div>
