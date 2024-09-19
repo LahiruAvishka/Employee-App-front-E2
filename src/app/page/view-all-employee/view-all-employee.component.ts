@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-view-all-employee',
   standalone: true,
-  imports: [HttpClientModule,FormsModule,CommonModule],
+  imports: [HttpClientModule, FormsModule, CommonModule],
   templateUrl: './view-all-employee.component.html',
   styleUrl: './view-all-employee.component.css'
 })
@@ -14,15 +14,24 @@ export class ViewAllEmployeeComponent {
 
   public employeeList:any;
 
-    constructor(private http:HttpClient){
-      this.loadEmployeeTable()
-    }
+  constructor(private http: HttpClient) {
+    this.loadEmployeeTable();
+  }
 
-  loadEmployeeTable(){
-    this.http.get("http://localhost:8080/emp-controller/get-all").subscribe(res=>{
+  loadEmployeeTable() {
+    this.http.get("http://localhost:8080/emp-controller/get-all").subscribe(res => {
 
-      this.employeeList=res;
+      this.employeeList = res;
       console.log(res);
     })
+  }
+
+  deleteEmployee(employe:any) {
+    this.http.delete(`http://localhost:8080/emp-controller/delete-emp/${employe.id}`,{responseType:'text'}).subscribe(res=>{
+      this.loadEmployeeTable()
+      console.log(res);
+    })
+     console.log(employe);
+
   }
 }
