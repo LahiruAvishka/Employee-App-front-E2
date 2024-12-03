@@ -11,6 +11,7 @@
             <th>Department</th>
             <th>Role</th>
             <th></th>
+            <th></th>
         </tr>
         <tr class="broder text-center" *ngFor="let employee of employeeList; index as i">
             <td>{{i+1}}</td>
@@ -19,9 +20,61 @@
             <td>{{employee.email}}</td>
             <td>{{employee.departmentId}}</td>
             <td>{{employee.roleId}}</td>
-            <td><button class="btn btn-danger" (click)="deleteEmployee(employee)"><i class="bi bi-trash"></i></button></td>
+            <td><button class="btn btn-danger" (click)="deleteEmployee(employee)"><i class="bi bi-trash"></i></button>
+            </td>
+            <td><button class="btn btn-primary" (click)="updateEmployee(employee)"><i class="bi bi-pencil-square" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"></i></button></td>
+
         </tr>
     </table>
 
 
+</div>
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">New message</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Id</label>
+                    <input type="text" class="form-control" id="recipient-name" [(ngModel)]="selectEmployee.id"disabled>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Name</label>
+                    <input type="text" class="form-control" id="recipient-name"[(ngModel)]="selectEmployee.firstName">
+                </div>
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Name</label>
+                    <input type="text" class="form-control" id="recipient-name"[(ngModel)]="selectEmployee.lastName">
+                </div>
+                
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Email</label>
+                    <input type="text" class="form-control" id="recipient-name" [(ngModel)]="selectEmployee.email">
+                </div>
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Department</label>
+                    <input type="text" class="form-control" id="recipient-name" [(ngModel)]="selectEmployee.departmentId">
+                </div>
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Role</label>
+                    <input type="text" class="form-control" id="recipient-name" [(ngModel)]="selectEmployee.roleId">
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="saveUpdateEmployee()">Update</button>
+            </div>
+        </div>
+    </div>
 </div>
